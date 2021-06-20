@@ -8,7 +8,6 @@ public class BlogUserController {
 	
 	@GetMapping("/blogUser/joinForm")
 	public String joinForm() {
-		
 		return "blogUser/joinForm";
 	}
 	

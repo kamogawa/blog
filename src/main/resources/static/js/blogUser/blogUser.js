@@ -16,9 +16,8 @@ let index = {
 			url: "/blog/api/blogUser",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
-			dataType: "json"//レスポンスタイプ設定
+			dataType: "json"//レスポンスタイプ設定　defaultがjson
 		}).done(function(response){
-			console.log(response);
 			alert("登録完了");
 			location.href="/blog";
 		}).fail(function(error){
