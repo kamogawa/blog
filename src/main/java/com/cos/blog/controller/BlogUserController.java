@@ -13,7 +13,6 @@ public class BlogUserController {
 	
 	@GetMapping("/blogUser/loginForm")
 	public String loginForm() {
-		
 		return "blogUser/loginForm";
 	}
 }

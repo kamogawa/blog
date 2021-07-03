@@ -1,9 +1,8 @@
 package com.cos.blog.service;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.blog.model.BlogUser;
 import com.cos.blog.repository.BlogUserRepository;
@@ -19,14 +18,13 @@ public class BlogUserService {
 	public BlogUserRepository blogUserRepository;
 	
 	@Transactional
-	public int JoinUser(BlogUser blogUser) {
-		try {
-			blogUserRepository.save(blogUser);
-			return 1;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("ユーザー登録失敗：" + e.getMessage());
-		}
-		return -1;
+	public void JoinUser(BlogUser blogUser) {
+		blogUserRepository.save(blogUser);
 	}
+	
+	@Transactional(readOnly = true) //selectする時、Transactionが走る。サービス終了時Transaction終了。（整合生を保つ）
+	public BlogUser LoginUser(BlogUser blogUser) {
+        return blogUserRepository.findByUsernameAndPassword(blogUser.getUsername(), blogUser.getPassword());
+	}
+	
 }

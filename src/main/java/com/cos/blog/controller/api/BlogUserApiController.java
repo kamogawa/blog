@@ -1,5 +1,7 @@
 package com.cos.blog.controller.api;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,11 +19,29 @@ public class BlogUserApiController {
 	@Autowired
 	private BlogUserService blogUserService;
 	
+	@Autowired
+	private HttpSession session;
+	
 	@PostMapping("/api/blogUser")
 	public ResponseDto<Integer> save(@RequestBody BlogUser blogUser) {
-		System.out.println("userApi");
+		System.out.println("userApi: save");
 		blogUser.setRole(RoleType.USER);
-		int result =blogUserService.JoinUser(blogUser);
-		return new ResponseDto<Integer>(HttpStatus.OK, result); //jacksonでjson形式でReturnされる。
+		blogUserService.JoinUser(blogUser);
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //jacksonでjson形式でReturnされる。
 	}
+	
+	@PostMapping("/api/blogUser/login")
+	public ResponseDto<Integer> login(@RequestBody BlogUser blogUser) {
+		System.out.println("userApi: login");
+		blogUser.setRole(RoleType.USER);
+		BlogUser principal = blogUserService.LoginUser(blogUser);
+		
+		if (principal != null) {
+			session.setAttribute("principal", principal);
+		}
+		
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
+	}
+	
+	
 }

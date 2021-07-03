@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,6 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 		<a class="navbar-brand" href="/blog">HOME</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -24,12 +24,30 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
-			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link" href="/blog/blogdUser/loginForm">ログイン</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="/blog/blogUser/joinForm">サインイン</a>
-				</li>
-			</ul>
+		<c:choose>
+			<c:when test="${empty sessionScope.principal}">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="/blog/blogUser/loginForm">ログイン</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/blog/blogUser/joinForm">サインイン</a>
+					</li>
+				</ul>
+			</c:when>
+			<c:otherwise>
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="/blog/board/writeForm">作成　</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/blog/blogUser/userForm">プロフィール</a>
+					</li>
+					<li class="nav-item"><a class="nav-link" href="/blog/blogUser/logout">ログアウト</a>
+					</li>
+				</ul>
+			</c:otherwise>
+		</c:choose>
+		
+
+			
+
 		</div>
 	</nav>
 	<br />
