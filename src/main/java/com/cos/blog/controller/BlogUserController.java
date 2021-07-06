@@ -3,15 +3,18 @@ package com.cos.blog.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+//　ログインできないユーザーを/auth/**に設定
+// '/'の場合、Index.jspを設定
+//　'static'以下にある/js/**, /css/** など
 @Controller
 public class BlogUserController {
 	
-	@GetMapping("/blogUser/joinForm")
+	@GetMapping("/auth/joinForm")
 	public String joinForm() {
 		return "blogUser/joinForm";
 	}
 	
-	@GetMapping("/blogUser/loginForm")
+	@GetMapping("/auth/loginForm")
 	public String loginForm() {
 		return "blogUser/loginForm";
 	}

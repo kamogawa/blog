@@ -2,25 +2,24 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
-	<form>
+	<form action="#" method="post">
 		<div class="form-group">
 			<label for="username">ユーザー名：</label>
-			<input type="text" class="form-control" placeholder="Enter username" id="username">
+			<input type="text" name="username" class="form-control" placeholder="Enter username" id="username">
 		</div>
 		<div class="form-group">
 			<label for="pwd">パスワード：</label>
 			<input type="password"
-			class="form-control" placeholder="Enter password" id="password">
+			class="form-control" name="password" placeholder="Enter password" id="password">
 		</div>
 		<div class="form-group form-check">
-			<label class="form-check-label"> <input
-				class="form-check-input" type="checkbox"> Remember me
+			<label class="form-check-label"> 
+			<input name="remember" class="form-check-input" type="checkbox"> Remember me
 			</label>
 		</div>
 		<button id="btn-login" class="btn btn-primary">登録</button>
 	</form>
 </div>
-<script src="/blog/js/blogUser/blogUser.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 
 
