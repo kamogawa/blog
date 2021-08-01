@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.blog.dto.ResponseDto;
 import com.cos.blog.model.BlogUser;
-import com.cos.blog.model.RoleType;
 import com.cos.blog.service.BlogUserService;
 
 @RestController
@@ -17,13 +16,10 @@ public class BlogUserApiController {
 	@Autowired
 	private BlogUserService blogUserService;
 	
-//	@Autowired
-//	private HttpSession session;
-	
 	@PostMapping("/auth/joinProc")
 	public ResponseDto<Integer> save(@RequestBody BlogUser blogUser) {
 		System.out.println("userApi: save");
-		blogUser.setRole(RoleType.USER);
+
 		blogUserService.JoinUser(blogUser);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //jacksonでjson形式でReturnされる。
 	}

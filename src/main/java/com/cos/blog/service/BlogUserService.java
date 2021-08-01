@@ -1,10 +1,12 @@
 package com.cos.blog.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.cos.blog.model.BlogUser;
+import com.cos.blog.model.RoleType;
 import com.cos.blog.repository.BlogUserRepository;
 
 //Ioc spring beanに登録してくれる。
@@ -16,9 +18,15 @@ public class BlogUserService {
 	//DI
 	@Autowired
 	public BlogUserRepository blogUserRepository;
-	
+
+	@Autowired
+	private BCryptPasswordEncoder encoder;
+
 	@Transactional
 	public void JoinUser(BlogUser blogUser) {
+		String encPassword = encoder.encode(blogUser.getPassword());
+		blogUser.setRole(RoleType.USER);
+		blogUser.setPassword(encPassword);
 		blogUserRepository.save(blogUser);
 	}
 	
