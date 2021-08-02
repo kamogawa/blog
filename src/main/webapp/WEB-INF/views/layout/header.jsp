@@ -19,6 +19,8 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 </head>
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -39,9 +41,9 @@
 			</c:when>
 			<c:otherwise>
 				<ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" href="/board/form">作成　</a>
+					<li class="nav-item"><a class="nav-link" href="/board/saveForm">作成　</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="/user/form">プロフィール</a>
+					<li class="nav-item"><a class="nav-link" href="/user/updateForm">プロフィール</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="/logout">ログアウト</a>
 					</li>
