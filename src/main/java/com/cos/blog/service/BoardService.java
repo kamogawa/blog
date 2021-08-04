@@ -24,14 +24,21 @@ public class BoardService {
 		boardRepository.save(board);
 	}
 	
+	@Transactional(readOnly = true)
 	public Page<Board> boardList(Pageable pageable) {
 		return boardRepository.findAll(pageable);
 	}
 	
+	@Transactional(readOnly = true)
 	public Board boardContent(int id) {
 		return boardRepository.findById(id)
 				.orElseThrow(()->{
 					return new IllegalArgumentException("閲覧失敗");
 				});
+	}
+	
+	@Transactional
+	public void deleteId(int id) {
+		boardRepository.deleteById(id);
 	}
 }

@@ -2,6 +2,22 @@ let index = {
 	init: function() {
 		$("#btn-save").on("click",() => {
 			this.saveBoard();
+		});		
+		$("#btn-delete").on("click",() => {
+			this.deletebyId();
+		});
+	},
+	deletebyId: function() {
+		var id = $("#id").text();
+		$.ajax({
+			type: "DELETE",
+			url: "/api/board/"+id,
+			dataType: "json"
+		}).done(function(response){
+			alert("削除完了");
+			location.href="/";
+		}).fail(function(error){
+			alert(error);
 		});
 	},
 	saveBoard: function() {
