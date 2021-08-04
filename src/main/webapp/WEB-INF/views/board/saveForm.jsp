@@ -9,7 +9,7 @@
 		</div>
 		<div class="form-group">
 		    <label for="content">内容:</label>
-		    <textarea class="form-control summernote" rows="5" id="content"></textarea>
+		    <textarea class="form-control" rows="5" id="content"></textarea>
 		</div>
 	</form>
 	<button id="btn-save" class="btn btn-primary">登録</button>

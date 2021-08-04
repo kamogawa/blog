@@ -27,4 +27,11 @@ public class BoardService {
 	public Page<Board> boardList(Pageable pageable) {
 		return boardRepository.findAll(pageable);
 	}
+	
+	public Board boardContent(int id) {
+		return boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("閲覧失敗");
+				});
+	}
 }
