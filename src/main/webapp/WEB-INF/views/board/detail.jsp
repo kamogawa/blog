@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
 	<button class="btn btn-secondray" onclick="history.back()">前へ戻る</button>
-	<button id="btn-update" class="btn btn-warning">修正</button>
+	<a href="/board/${board.id}/updateForm" class="btn btn-warning">修正</a>
 	<c:if test="${board.user.id == principal.blogUser.id}">
 		<button id="btn-delete" class="btn btn-danger">削除</button>
 	</c:if>

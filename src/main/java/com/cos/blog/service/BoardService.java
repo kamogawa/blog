@@ -41,4 +41,15 @@ public class BoardService {
 	public void deleteId(int id) {
 		boardRepository.deleteById(id);
 	}
+	
+	@Transactional
+	public void updateBoard(int id, Board requestBoard) {
+		Board board = boardRepository.findById(id)
+				.orElseThrow(()->{
+					return new IllegalArgumentException("閲覧失敗");
+				});
+		board.setTitle(requestBoard.getTitle());
+		board.setContent(requestBoard.getContent());
+		//トランザクションが終了されdirtycheckingご、DBに自動的にアップデートされる。
+	}
 }
