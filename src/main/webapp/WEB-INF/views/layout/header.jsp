@@ -43,7 +43,7 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link" href="/board/saveForm">作成　</a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="/user/updateForm">プロフィール</a>
+					<li class="nav-item"><a class="nav-link" href="/blogUser/updateForm">プロフィール</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="/logout">ログアウト</a>
 					</li>

@@ -14,11 +14,5 @@
 	</form>
 	<button id="btn-save" class="btn btn-primary">登録</button>
 </div>
-<script>
-  $('.summernote').summernote({
-    tabsize: 2,
-    height: 300
-  });
-</script>
 <script src="/js/board/board.js"></script>
 <%@ include file="../layout/footer.jsp"%>

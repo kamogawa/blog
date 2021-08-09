@@ -3,7 +3,12 @@ let index = {
 		$("#btn-save").on("click",() => {
 			this.saveUser();
 		});
+		$("#btn-update").on("click",() => {
+			alert("aaa");
+			this.updateUser();
+		});
 	},
+	
 	saveUser: function() {
 		let data = {
 				username: $("#username").val(),
@@ -14,6 +19,26 @@ let index = {
 		$.ajax({
 			type: "POST",
 			url: "/auth/joinProc",
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"//レスポンスタイプ設定　defaultがjson
+		}).done(function(response){
+			alert("登録完了");
+			location.href="/";
+		}).fail(function(error){
+			alert(error);
+		});
+	},
+	updateUser: function() {
+		let data = {
+				id: $("#id").val(),
+				email: $("#email").val(),
+				password: $("#password").val()
+		};
+		//Joinリクエスト
+		$.ajax({
+			type: "PUT",
+			url: "/blogUser",
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=utf-8",
 			dataType: "json"//レスポンスタイプ設定　defaultがjson

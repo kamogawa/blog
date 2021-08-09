@@ -30,6 +30,18 @@ public class BlogUserService {
 		blogUserRepository.save(blogUser);
 	}
 	
+	@Transactional
+	public void updateUser(BlogUser blogUser) {
+		BlogUser persistance = blogUserRepository.findById(blogUser.getId())
+				.orElseThrow(()->{
+					return new IllegalArgumentException("会員情報取得失敗");
+				});
+		String rawPassword = blogUser.getPassword();
+		String encPassword = encoder.encode(rawPassword);
+		persistance.setPassword(encPassword);
+		persistance.setEmail(blogUser.getEmail());
+	}
+	
 //	@Transactional(readOnly = true) //selectする時、Transactionが走る。サービス終了時Transaction終了。（整合生を保つ）
 //	public BlogUser LoginUser(BlogUser blogUser) {
 //        return blogUserRepository.findByUsernameAndPassword(blogUser.getUsername(), blogUser.getPassword());

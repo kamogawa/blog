@@ -3,6 +3,7 @@ package com.cos.blog.controller.api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,15 @@ public class BlogUserApiController {
 
 		blogUserService.JoinUser(blogUser);
 		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //jacksonでjson形式でReturnされる。
+	}
+	
+	@PutMapping("/blogUser")
+	public ResponseDto<Integer> update(@RequestBody BlogUser blogUser) {
+		System.out.println("userApi: update");
+		
+		blogUserService.updateUser(blogUser);
+		System.out.println(blogUser.getEmail());
+		return new ResponseDto<Integer>(HttpStatus.OK.value(), 1);
 	}
 	
 //	@PostMapping("/api/blogUser/login")

@@ -18,4 +18,9 @@ public class BlogUserController {
 	public String loginForm() {
 		return "blogUser/loginForm";
 	}
+	
+	@GetMapping("/blogUser/updateForm")
+	public String updateForm() {
+		return "blogUser/updateForm";
+	}
 }
