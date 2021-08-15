@@ -8,12 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.cos.blog.model.BlogUser;
 
+import lombok.Data;
 import lombok.Getter;
 
 // spring security がログインリクエストを持っていく。
 // ログインが完了されたらUserDetailsタイプのObjectを
 // spring securityの独自のセッションに保存する。
-@Getter
+@Data
 public class PrincipalDetail implements UserDetails{
 
 	private BlogUser blogUser; //コンポジション composition

@@ -21,7 +21,7 @@ public class BlogUserService {
 
 	@Autowired
 	private BCryptPasswordEncoder encoder;
-
+	
 	@Transactional
 	public void JoinUser(BlogUser blogUser) {
 		String encPassword = encoder.encode(blogUser.getPassword());
@@ -41,10 +41,5 @@ public class BlogUserService {
 		persistance.setPassword(encPassword);
 		persistance.setEmail(blogUser.getEmail());
 	}
-	
-//	@Transactional(readOnly = true) //selectする時、Transactionが走る。サービス終了時Transaction終了。（整合生を保つ）
-//	public BlogUser LoginUser(BlogUser blogUser) {
-//        return blogUserRepository.findByUsernameAndPassword(blogUser.getUsername(), blogUser.getPassword());
-//	}
 	
 }

@@ -16,8 +16,8 @@
 			<label for="pwd">パスワード：</label>
 			<input type="password" class="form-control" placeholder="Enter password" id="password">
 		</div>
-		<button id="btn-update" class="btn btn-primary">修正登録</button>
 	</form>
+	<button id="btn-update" class="btn btn-primary">修正登録</button>
 </div>
 <script src="/js/blogUser/blogUser.js"></script>
 <%@ include file="../layout/footer.jsp"%>
